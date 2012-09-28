@@ -1,0 +1,22 @@
+srealms.create
+srealms.import
+srealms.teleport.others
+srealms.teleport
+srealms.delete
+srealms.shart
+srealms.load
+srealms.unload
+srealms.setspawn
+srealms.list
+srealms.help
+
+/sr
+/srcreate 	<name> <environment>
+/srimport 	<name> <environment>
+/srtp 		<dest> (name)
+/srdelete 	<name>
+/shart		<name>
+/srload 	<name>
+/srunload 	<name>
+/srsetspawn
+/srlist

@@ -1,0 +1,42 @@
+name: ShaboozeyRealms
+version: 1.0
+authors: [PattersNET, nanaNadine]
+main: com.shaboozey.realms.ShaboozeyRealms
+
+commands:
+    sr:
+        description: Lists all commands
+        usage: /sr ?
+    shart:
+        description: Shart on people
+        usage: /shart <name>
+    srcreate:
+        description: Creates a world
+        usage: /srcreate <name> <environment>
+    srload:
+        description: Loads a world
+        usage: /srload <name>
+    srunload:
+        description: Unloads a world
+        usage: /srunload <name>
+    srdelete:
+        description: Deletes a world
+        usage: /srdelete <name>
+    srtp:
+        description: Deletes a world
+        usage: /srtp <dest> (name)
+    srsetspawn:
+        description: Deletes a world
+        usage: /srsetspawn
+    srimport:
+        description: Imports a world
+        usage: /srimport <name> <environment>
+    srlist:
+        description: List all worlds
+        usage: /srlist
+    srinfo:
+        description: Provides information about the world
+        usage: /srinfo
+    srset:
+        description: Sets a node value in the database
+        usage: /srset <world> <node> <value>
