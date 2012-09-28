@@ -42,6 +42,9 @@ public class WorldListener implements Listener {
 	{
 		World w = e.getFrom();
 		
+		if(Util.isDefaultMap(w.getName()))
+			return;
+		
 		if(w.getPlayers().size() == 0)
 		{
 			RealmManager.unloadRealm(

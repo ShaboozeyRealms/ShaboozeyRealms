@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.shaboozey.realms.ShaboozeyRealms;
+import com.shaboozey.realms.manager.RealmFileManager;
 import com.shaboozey.realms.manager.RealmManager;
 import com.shaboozey.realms.util.LoadState;
 import com.shaboozey.realms.util.Messaging;
@@ -45,8 +46,7 @@ public class TeleportCommand implements CommandExecutor {
 			
 			if(RealmManager.getRealmState(args[0]) == LoadState.UNLOADED)
 			{
-				Messaging.error(sender, String.format("World '%s' needs to be loaded before you can teleport to it", args[0]));
-				return true;
+				RealmManager.loadRealm(RealmFileManager.getRealmConfig(args[0]), sender);
 			}
 			
 			World w = ShaboozeyRealms.getPlugin().getServer().getWorld(args[0]);
@@ -83,8 +83,7 @@ public class TeleportCommand implements CommandExecutor {
 			
 			if(RealmManager.getRealmState(args[0]) == LoadState.UNLOADED)
 			{
-				Messaging.error(sender, String.format("World '%s' needs to be loaded before you can teleport to it", args[0]));
-				return true;
+				RealmManager.loadRealm(RealmFileManager.getRealmConfig(args[0]), sender);
 			}
 			
 			World w = ShaboozeyRealms.getPlugin().getServer().getWorld(args[0]);
