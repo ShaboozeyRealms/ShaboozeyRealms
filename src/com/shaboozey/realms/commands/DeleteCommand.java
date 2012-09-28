@@ -38,7 +38,7 @@ public class DeleteCommand implements CommandExecutor {
 			return true;
 		}
 		
-		RealmManager.deleteRealm(new Realm(args[0], null, true, true), sender);
+		RealmManager.deleteRealm(new Realm(args[0], null), sender);
 		return true;
 	}
 }

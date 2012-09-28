@@ -9,7 +9,7 @@ import com.shaboozey.realms.commands.HelpCommand;
 import com.shaboozey.realms.commands.ImportCommand;
 import com.shaboozey.realms.commands.InfoCommand;
 import com.shaboozey.realms.commands.LoadCommand;
-import com.shaboozey.realms.commands.SetCommand;
+import com.shaboozey.realms.commands.MobsCommand;
 import com.shaboozey.realms.commands.SetSpawnCommand;
 import com.shaboozey.realms.commands.TeleportCommand;
 import com.shaboozey.realms.commands.UnloadCommand;
@@ -37,18 +37,17 @@ public class ShaboozeyRealms extends JavaPlugin {
 		
 		Messaging.message(Bukkit.getConsoleSender(), "Loading worlds.yml...");
 		RealmFileManager.load();
-		RealmFileManager.loadDefaultWorlds();
 		
 		if(!(RealmFileManager.hasConfig(defaultWorld)))
 		{
 			RealmManager.registerDefaultWorld(
-					new Realm(defaultWorld, Environment.NORMAL, false, false),
+					new Realm(defaultWorld, Environment.NORMAL),
 					Bukkit.getConsoleSender());
 		}
-
-		Messaging.message(Bukkit.getConsoleSender(), "Setting world limits...");
-		Util.setLimits();
 		
+		RealmFileManager.loadDefaultWorlds();
+		
+		Util.removeEntities();
 		registerCommands();
 	}
 	
@@ -72,7 +71,7 @@ public class ShaboozeyRealms extends JavaPlugin {
 		this.getCommand("srlist").setExecutor(new ListCommand());
 		this.getCommand("shart").setExecutor(new ShartCommand());
 		this.getCommand("srinfo").setExecutor(new InfoCommand());
-		this.getCommand("srset").setExecutor(new SetCommand());
+		this.getCommand("srmobs").setExecutor(new MobsCommand());
 	}
 
 	public static ShaboozeyRealms getPlugin() {

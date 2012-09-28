@@ -3,6 +3,7 @@ package com.shaboozey.realms.manager;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
@@ -32,9 +33,7 @@ public class RealmFileManager {
 				{
 					RealmManager.registerDefaultWorld(
 							new Realm(world, 
-									Util.getEnvironment(worlds.getString("worlds." + world + ".environment")),
-									worlds.getBoolean("worlds." + world + ".mob-spawn"),
-									worlds.getBoolean("worlds." + world + "animal-spawn")),
+									Util.getEnvironment(worlds.getString("worlds." + world + ".environment"))),
 							Bukkit.getConsoleSender());
 					continue;
 				}
@@ -43,9 +42,7 @@ public class RealmFileManager {
 				{
 					RealmManager.loadRealm(
 							new Realm(world, 
-									Util.getEnvironment(worlds.getString("worlds." + world + ".environment")),
-									worlds.getBoolean("worlds." + world + ".mob-spawn"),
-									worlds.getBoolean("worlds." + world + "animal-spawn")),
+									Util.getEnvironment(worlds.getString("worlds." + world + ".environment"))),
 							Bukkit.getConsoleSender());
 					continue;
 				}
@@ -53,9 +50,7 @@ public class RealmFileManager {
 				{
 					RealmManager.registerUnloadedWorld(
 							new Realm(world, 
-									Util.getEnvironment(worlds.getString("worlds." + world + ".environment")),
-									worlds.getBoolean("worlds." + world + ".mob-spawn"),
-									worlds.getBoolean("worlds." + world + "animal-spawn")),
+									Util.getEnvironment(worlds.getString("worlds." + world + ".environment"))),
 							Bukkit.getConsoleSender());
 					continue;
 							
@@ -71,8 +66,6 @@ public class RealmFileManager {
 	
 	public static void createWorldConfig(Realm realm) {
 		worlds.set("worlds." + realm.getName() + ".environment", realm.getEnvironment().toString());
-		worlds.set("worlds." + realm.getName() + ".mob-spawn", realm.getMobSpawn());
-		worlds.set("worlds." + realm.getName() + ".animals-spawn", realm.getAnimalSpawn());
 		worlds.set("worlds." + realm.getName() + ".autoload", true);
 	}
 
@@ -85,9 +78,7 @@ public class RealmFileManager {
 		if(hasConfig(realmName))
 		{
 			return new Realm(realmName, 
-					Util.getEnvironment(worlds.getString("worlds." + realmName + ".environment")),
-					worlds.getBoolean("worlds." + realmName + ".mob-spawn"),
-					worlds.getBoolean("worlds." + realmName + "animal-spawn"));
+					Util.getEnvironment(worlds.getString("worlds." + realmName + ".environment")));
 		}
 		
 		return null;
@@ -97,15 +88,23 @@ public class RealmFileManager {
 	public static boolean hasConfig(String realmName) {
 		return worlds.contains("worlds." + realmName);
 	}
-	
-	public static void setAnimalSpawn(String realmName, boolean animalSpawn)
-	{
-		worlds.set("worlds." + realmName + ".animal-spawn", animalSpawn);
-	}
 
-	public static void setMobSpawn(String realmName, boolean mobSpawn)
+	public static void setDisabledMob(String realmName, String mob, boolean allowed)
 	{
-		worlds.set("worlds." + realmName + ".mob-spawn", mobSpawn);
+		List<String> mobs = worlds.getStringList("worlds." + realmName + ".disabled-mobs");
+		
+		if(allowed)
+			mobs.remove(mob);
+		else
+			if(!isDisabledMob(realmName, mob))
+				mobs.add(mob);
+		
+		worlds.set("worlds." + realmName + ".disabled-mobs", mobs);
+	}
+	
+	public static boolean isDisabledMob(String realmName, String mob)
+	{
+		return worlds.getStringList("worlds." + realmName + ".disabled-mobs").contains(mob);
 	}
 
 	// Save/Load API

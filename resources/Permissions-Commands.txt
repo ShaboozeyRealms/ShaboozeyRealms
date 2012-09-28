@@ -1,4 +1,5 @@
 srealms.create
+srealms.mobs
 srealms.import
 srealms.teleport.others
 srealms.teleport
@@ -11,6 +12,7 @@ srealms.list
 srealms.help
 
 /sr
+/srmobs		<world> <mob> <value>
 /srcreate 	<name> <environment>
 /srimport 	<name> <environment>
 /srtp 		<dest> (name)

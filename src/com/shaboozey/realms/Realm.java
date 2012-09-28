@@ -7,15 +7,11 @@ public class Realm {
 
 	private String realmName;
 	private Environment realmEnvironment;
-	private boolean mobSpawning;
-	private boolean animalSpawning;
 	
-	public Realm(String realmName, Environment realmEnvironment, boolean mobSpawning, boolean animalSpawning)
+	public Realm(String realmName, Environment realmEnvironment)
 	{
 		this.realmName = realmName;
 		this.realmEnvironment = realmEnvironment;
-		this.mobSpawning = mobSpawning;
-		this.animalSpawning = animalSpawning;
 	}
 	
 	public String getName() {
@@ -25,13 +21,4 @@ public class Realm {
 	public Environment getEnvironment() {
 		return realmEnvironment;
 	}
-	
-	public boolean getMobSpawn() {
-		return mobSpawning;
-	}
-
-	public boolean getAnimalSpawn() {
-		return animalSpawning;
-	}
-		
 }

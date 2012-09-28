@@ -37,6 +37,6 @@ commands:
     srinfo:
         description: Provides information about the world
         usage: /srinfo
-    srset:
-        description: Sets a node value in the database
-        usage: /srset <world> <node> <value>
+    srmobs:
+        description: Sets whether a mob can spawn or not
+        usage: /srmobs <world> <mob> <value>

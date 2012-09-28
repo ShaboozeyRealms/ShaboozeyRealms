@@ -35,8 +35,6 @@ public class InfoCommand implements CommandExecutor {
 		
 		Messaging.message(sender, "Name: " + realm.getName());
 		Messaging.message(sender, "Environment: " + realm.getEnvironment());
-		Messaging.message(sender, "Mob Spawning: " + realm.getMobSpawn());
-		Messaging.message(sender, "Animal Spawning: " + realm.getAnimalSpawn());
 		
 		return true;
 		

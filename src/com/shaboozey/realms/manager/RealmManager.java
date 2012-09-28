@@ -26,10 +26,11 @@ public class RealmManager {
 
 		WorldCreator wc = new WorldCreator(realm.getName());
 		wc.environment(realm.getEnvironment());
-		wc.createWorld();
+		World w = wc.createWorld();
 		
 		realms.remove(realm.getName());
 		realms.put(realm.getName(), LoadState.LOADED);
+		Util.removeEntities(w);
 		
 		Messaging.message(sender, String.format("World '%s' loaded successfully.", realm.getName()));
 	}

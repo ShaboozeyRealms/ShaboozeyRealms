@@ -38,7 +38,7 @@ public class ImportCommand implements CommandExecutor {
 			return true;
 		}
 		
-		RealmManager.importRealm(new Realm(args[0], Util.getEnvironment(args[1]), true, true), sender);
+		RealmManager.importRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;
 	}
 }

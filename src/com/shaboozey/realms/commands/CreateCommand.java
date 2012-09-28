@@ -38,7 +38,7 @@ public class CreateCommand implements CommandExecutor {
 			return true;
 		}
 		
-		RealmManager.createRealm(new Realm(args[0], Util.getEnvironment(args[1]), true, true), sender);
+		RealmManager.createRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;
 	}
 

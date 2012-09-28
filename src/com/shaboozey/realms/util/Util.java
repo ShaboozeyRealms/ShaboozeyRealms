@@ -1,18 +1,39 @@
 package com.shaboozey.realms.util;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
+import org.bukkit.entity.Blaze;
+import org.bukkit.entity.Chicken;
+import org.bukkit.entity.Cow;
+import org.bukkit.entity.Creeper;
+import org.bukkit.entity.Enderman;
+import org.bukkit.entity.Ghast;
+import org.bukkit.entity.Giant;
+import org.bukkit.entity.IronGolem;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.MagmaCube;
+import org.bukkit.entity.Ocelot;
+import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
+import org.bukkit.entity.Silverfish;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Slime;
+import org.bukkit.entity.Snowman;
+import org.bukkit.entity.Spider;
+import org.bukkit.entity.Squid;
+import org.bukkit.entity.Villager;
+import org.bukkit.entity.Wolf;
+import org.bukkit.entity.Zombie;
 
-import com.shaboozey.realms.Realm;
 import com.shaboozey.realms.ShaboozeyRealms;
 import com.shaboozey.realms.manager.RealmFileManager;
 import com.shaboozey.realms.manager.RealmManager;
@@ -115,47 +136,119 @@ public class Util {
 		}
 	}
 	
-	public static void setLimits()
+	public static void removeEntities()
 	{
 		for(String s : RealmManager.getRealms().keySet())
 		{
-			Realm realm = RealmFileManager.getRealmConfig(s);
 			
-			if(RealmManager.isLoaded(realm.getName()))
+			if(!RealmFileManager.hasConfig(s))
 			{
-				World w = ShaboozeyRealms.getPlugin().getServer().getWorld(s);
-				if(!realm.getAnimalSpawn())
-				{
-					w.setAnimalSpawnLimit(0);
-					w.setWaterAnimalSpawnLimit(0);
-				}
-	
-				if(!realm.getMobSpawn())
-				{
-					w.setMonsterSpawnLimit(0);
-				}
+				continue;
+			}
+			
+			if(RealmManager.getRealmState(s) == LoadState.UNLOADED)
+			{
+				continue;
+			}
+			
+			World w = ShaboozeyRealms.getPlugin().getServer().getWorld(s);
+			
+			for(LivingEntity le : w.getLivingEntities())
+			{	
+				if(le instanceof Chicken && RealmFileManager.isDisabledMob(s, "chicken"))
+					le.remove();
+				else if(le instanceof Cow && RealmFileManager.isDisabledMob(s, "cow"))
+					le.remove();
+				else if(le instanceof Ocelot && RealmFileManager.isDisabledMob(s, "ocelot"))
+					le.remove();
+				else if(le instanceof Pig && RealmFileManager.isDisabledMob(s, "pig"))
+					le.remove();
+				else if(le instanceof Sheep && RealmFileManager.isDisabledMob(s, "sheep"))
+					le.remove();
+				else if(le instanceof Wolf && RealmFileManager.isDisabledMob(s, "wolf"))
+					le.remove();
+				else if(le instanceof Villager && RealmFileManager.isDisabledMob(s, "villager"))
+					le.remove();
+				else if(le instanceof IronGolem && RealmFileManager.isDisabledMob(s, "irongolem"))
+					le.remove();
+				else if(le instanceof Snowman && RealmFileManager.isDisabledMob(s, "snowman"))
+					le.remove();
+				else if(le instanceof Blaze && RealmFileManager.isDisabledMob(s, "blaze"))
+					le.remove();
+				else if(le instanceof Creeper && RealmFileManager.isDisabledMob(s, "creeper"))
+					le.remove();
+				else if(le instanceof Giant && RealmFileManager.isDisabledMob(s, "giant"))
+					le.remove();
+				else if(le instanceof Silverfish && RealmFileManager.isDisabledMob(s, "silverfish"))
+					le.remove();
+				else if(le instanceof Skeleton && RealmFileManager.isDisabledMob(s, "skeleton"))
+					le.remove();
+				else if(le instanceof Spider && RealmFileManager.isDisabledMob(s, "spider"))
+					le.remove();
+				else if(le instanceof Zombie && RealmFileManager.isDisabledMob(s, "zombie"))
+					le.remove();
+				else if(le instanceof Squid && RealmFileManager.isDisabledMob(s, "squid"))
+					le.remove();
+				else if(le instanceof Ghast && RealmFileManager.isDisabledMob(s, "ghast"))
+					le.remove();
+				else if(le instanceof Enderman && RealmFileManager.isDisabledMob(s, "enderman"))
+					le.remove();
+				else if(le instanceof Slime && RealmFileManager.isDisabledMob(s, "slime"))
+					le.remove();
+				else if(le instanceof MagmaCube && RealmFileManager.isDisabledMob(s, "magmacube"))
+					le.remove();
 			}
 		}
-		
-		Messaging.message(Bukkit.getConsoleSender(), "World limits set");
 	}
 	
-	public static void setLimits(World w)
+	public static void removeEntities(World w)
 	{
-		Realm realm = RealmFileManager.getRealmConfig(w.getName());
-		
-		if(RealmManager.isLoaded(realm.getName()))
-		{
-			if(!realm.getAnimalSpawn())
-			{
-				w.setAnimalSpawnLimit(0);
-				w.setWaterAnimalSpawnLimit(0);
-			}
-
-			if(!realm.getMobSpawn())
-			{
-				w.setMonsterSpawnLimit(0);
-			}
+		String s = w.getName();
+			
+		for(LivingEntity le : w.getLivingEntities())
+		{	
+			if(le instanceof Chicken && RealmFileManager.isDisabledMob(s, "chicken"))
+				le.remove();
+			else if(le instanceof Cow && RealmFileManager.isDisabledMob(s, "cow"))
+				le.remove();
+			else if(le instanceof Ocelot && RealmFileManager.isDisabledMob(s, "ocelot"))
+				le.remove();
+			else if(le instanceof Pig && RealmFileManager.isDisabledMob(s, "pig"))
+				le.remove();
+			else if(le instanceof Sheep && RealmFileManager.isDisabledMob(s, "sheep"))
+				le.remove();
+			else if(le instanceof Wolf && RealmFileManager.isDisabledMob(s, "wolf"))
+				le.remove();
+			else if(le instanceof Villager && RealmFileManager.isDisabledMob(s, "villager"))
+				le.remove();
+			else if(le instanceof IronGolem && RealmFileManager.isDisabledMob(s, "irongolem"))
+				le.remove();
+			else if(le instanceof Snowman && RealmFileManager.isDisabledMob(s, "snowman"))
+				le.remove();
+			else if(le instanceof Blaze && RealmFileManager.isDisabledMob(s, "blaze"))
+				le.remove();
+			else if(le instanceof Creeper && RealmFileManager.isDisabledMob(s, "creeper"))
+				le.remove();
+			else if(le instanceof Giant && RealmFileManager.isDisabledMob(s, "giant"))
+				le.remove();
+			else if(le instanceof Silverfish && RealmFileManager.isDisabledMob(s, "silverfish"))
+				le.remove();
+			else if(le instanceof Skeleton && RealmFileManager.isDisabledMob(s, "skeleton"))
+				le.remove();
+			else if(le instanceof Spider && RealmFileManager.isDisabledMob(s, "spider"))
+				le.remove();
+			else if(le instanceof Zombie && RealmFileManager.isDisabledMob(s, "zombie"))
+				le.remove();
+			else if(le instanceof Squid && RealmFileManager.isDisabledMob(s, "squid"))
+				le.remove();
+			else if(le instanceof Ghast && RealmFileManager.isDisabledMob(s, "ghast"))
+				le.remove();
+			else if(le instanceof Enderman && RealmFileManager.isDisabledMob(s, "enderman"))
+				le.remove();
+			else if(le instanceof Slime && RealmFileManager.isDisabledMob(s, "slime"))
+				le.remove();
+			else if(le instanceof MagmaCube && RealmFileManager.isDisabledMob(s, "magmacube"))
+				le.remove();
 		}
 	}
 }
