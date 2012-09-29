@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.shaboozey.realms.util.Messaging;
+import com.shaboozey.realms.util.Constants;
 
 public class SetSpawnCommand  implements CommandExecutor {
 
