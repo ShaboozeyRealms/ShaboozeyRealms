@@ -11,10 +11,12 @@ public class Constants {
 			"/srdelete <name>",
 			"/shart <name>",
 			"/srload <name>",
+			"/srmobs <worldname> <mob> <value>", 
 			"/srunload <name>",
 			"/srsetspawn",
 			"/srlist",
-			"/srinfo"
+			"/srinfo",
+			"/srwho <player>",
 	};
 	
 	public final static String[] descriptions =
@@ -26,10 +28,12 @@ public class Constants {
 			"Deletes a world",
 			"Shart a player",
 			"Loads a world",
+			"Turn mobs on/off in a world",
 			"Unloads a world",
 			"Sets the world spawn",
 			"Lists all the worlds",
-			"Provides info about the world"
+			"Provides info about the world",
+			"Shows worldname of <player>"
 	};
 	
 	public final static String[] errorMessages =
