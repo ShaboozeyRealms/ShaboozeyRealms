@@ -14,21 +14,21 @@ public class InfoCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.info")))
+		if(!(sender.hasPermission(Constants.permissions[4])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 	
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, "Invalid arguments: /srinfo <worldname>");
+			Messaging.error(sender, Constants.errorMessages[11]);
 			return true;
 		}
 
 		if(!(RealmFileManager.hasConfig(args[0])))
 		{
-			Messaging.error(sender, "No world configuration exists!");
+			Messaging.error(sender, Constants.errorMessages[12]);
 			return true;
 		}
 		

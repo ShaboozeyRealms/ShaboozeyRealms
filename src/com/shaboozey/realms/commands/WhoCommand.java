@@ -13,15 +13,15 @@ public class WhoCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.who")))
+		if(!(sender.hasPermission(Constants.permissions[13])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, "Invalid arguments: /srwho <player>");
+			Messaging.error(sender, Constants.errorMessages[31]);
 			return true;
 		}
 		

@@ -13,21 +13,21 @@ public class SetSpawnCommand  implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.setspawn")))
+		if(!(sender.hasPermission(Constants.permissions[8])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(sender instanceof Player))
 		{
-			Messaging.error(sender, "Consoles cannot set the spawn for worlds!");
+			Messaging.error(sender, Constants.errorMessages[22]);
 			return true;
 		}
 		
 		if(!(args.length == 0))
 		{
-			Messaging.error(sender, "Invalid arguments: /srsetspawn");
+			Messaging.error(sender, Constants.errorMessages[23]);
 			return true;
 		}
 		

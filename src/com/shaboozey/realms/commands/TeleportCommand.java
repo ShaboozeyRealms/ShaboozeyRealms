@@ -20,15 +20,15 @@ public class TeleportCommand implements CommandExecutor {
 		
 		if(args.length > 2 || args.length < 1)
 		{
-			Messaging.error(sender, "Invalid arguments: /srtp <dest> (name)");
+			Messaging.error(sender, Constants.errorMessages[25]);
 			return true;
 		}
 		
 		if(args.length == 2)
 		{
-			if(!(sender.hasPermission("srealms.teleport.others")))
+			if(!(sender.hasPermission(Constants.permissions[10])))
 			{
-				Messaging.error(sender, "Insufficent permissions!");
+				Messaging.error(sender, Constants.errorMessages[0]);
 				return true;
 			}
 			
@@ -63,15 +63,15 @@ public class TeleportCommand implements CommandExecutor {
 		}
 		else {
 
-			if(!(sender.hasPermission("srealms.teleport")))
+			if(!(sender.hasPermission(Constants.permissions[11])))
 			{
-				Messaging.error(sender, "Insufficent permissions!");
+				Messaging.error(sender, Constants.errorMessages[0]);
 				return true;
 			}
 			
 			if(!(sender instanceof Player))
 			{
-				Messaging.error(sender, "The console cannot teleport itself on the server.");
+				Messaging.error(sender, Constants.errorMessages[26]);
 				return true;
 			}
 			

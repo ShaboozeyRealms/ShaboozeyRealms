@@ -14,29 +14,30 @@ public class ImportCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.import")))
+		if(!(sender.hasPermission(Constants.permissions[3])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 2))
 		{
-			Messaging.error(sender, "Invalid arguments: /srimport <worldname> <worldtype>");
+			Messaging.error(sender, Constants.errorMessages[8]);
 			return true;
 		}
 		
 		if(!(Util.mapExists(args[0])))
 		{
-			Messaging.error(sender, "Cannot import this world as there is no map data.");
+			Messaging.error(sender, Constants.errorMessages[9]);
 			return true;
 		}
 		
 		if(Util.isDefaultMap(args[0]))
 		{
-			Messaging.error(sender, "Cannot import this world as it the default world!");
+			Messaging.error(sender, Constants.errorMessages[10]);
 			return true;
 		}
+		
 		
 		RealmManager.importRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;

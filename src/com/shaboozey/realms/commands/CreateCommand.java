@@ -14,29 +14,32 @@ public class CreateCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.create")))
+		if(!(sender.hasPermission(Constants.permissions[0])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 2))
 		{
-			Messaging.error(sender, "Invalid arguments: /srcreate <worldname> <worldtype>");
+			Messaging.error(sender,Constants.errorMessages[1]);
 			return true;
 		}
 		
 		if(Util.mapExists(args[0]))
 		{
-			Messaging.error(sender, "Cannot create this world as it already exists.");
+			Messaging.error(sender, Constants.errorMessages[2]);
 			return true;
 		}
 		
 		if(Util.isDefaultMap(args[0]))
 		{
-			Messaging.error(sender, "Cannot create this world as it the default world!");
+			Messaging.error(sender, Constants.errorMessages[3]);
 			return true;
 		}
+		
+		
+		Messaging.message(sender, "Creating world...");
 		
 		RealmManager.createRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;

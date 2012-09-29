@@ -15,39 +15,39 @@ public class LoadCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 		
-		if(!(sender.hasPermission("srealms.load")))
+		if(!(sender.hasPermission(Constants.permissions[6])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, "Invalid arguments: /srload <worldname>");
+			Messaging.error(sender, Constants.errorMessages[14]);
 			return true;
 		}
 		
 		if(!(Util.mapExists(args[0])))
 		{
-			Messaging.error(sender, "Cannot load this world as it does not exist!");
+			Messaging.error(sender, Constants.errorMessages[15]);
 			return true;
 		}
 
 		if(!(RealmFileManager.hasConfig(args[0])))
 		{
-			Messaging.error(sender, "No config exists for this world... try /srcreate <name> <environment>");
+			Messaging.error(sender, Constants.errorMessages[16]);
 			return true;
 		}
 		
 		if(Util.isDefaultMap(args[0]))
 		{
-			Messaging.error(sender, "Cannot load this world as it the default world!");
+			Messaging.error(sender, Constants.errorMessages[17]);
 			return true;
 		}
 
 		if(RealmManager.isLoaded(args[0]))
 		{
-			Messaging.error(sender, "This world is already loaded!");
+			Messaging.error(sender, Constants.errorMessages[18]);
 			return true;
 		}
 		

@@ -14,27 +14,27 @@ public class MobsCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 		
-		if(!(sender.hasPermission("srealms.mobs")))
+		if(!(sender.hasPermission(Constants.permissions[7])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 3))
 		{
-			Messaging.error(sender, "Invalid arguments: /srmobs <worldname> <mob> <value>");
+			Messaging.error(sender, Constants.errorMessages[19]);
 			return true;
 		}
 		
 		if(!RealmFileManager.hasConfig(args[0]))
 		{
-			Messaging.error(sender, "Invalid arguments: /srmobs <worldname> <mob> <value>");
+			Messaging.error(sender, Constants.errorMessages[20]);
 			return true;
 		}
 		
 		if(!isValidMob(args[1]))
 		{
-			Messaging.error(sender, "That is not a valid mob type");
+			Messaging.error(sender, Constants.errorMessages[21]);
 			return true;
 		}
 		

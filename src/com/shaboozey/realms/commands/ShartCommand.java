@@ -12,15 +12,15 @@ public class ShartCommand  implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 		
-		if(!(sender.hasPermission("srealms.shart")))
+		if(!(sender.hasPermission(Constants.permissions[9])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, "Invalid arguments: /shart <name>... someone needs to shart themselves.");
+			Messaging.error(sender, Constants.errorMessages[24]);
 			return true;
 		}
 		

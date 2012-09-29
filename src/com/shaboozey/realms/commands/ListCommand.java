@@ -17,15 +17,15 @@ public class ListCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.list")))
+		if(!(sender.hasPermission(Constants.permissions[5])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 0))
 		{
-			Messaging.error(sender, "Invalid arguments: /srlist <worldname>");
+			Messaging.error(sender, Constants.errorMessages[13]);
 			return true;
 		}
 		

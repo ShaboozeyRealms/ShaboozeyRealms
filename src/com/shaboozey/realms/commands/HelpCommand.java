@@ -12,15 +12,15 @@ public class HelpCommand  implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 	
-		if(!(sender.hasPermission("srealms.help")))
+		if(!(sender.hasPermission(Constants.permissions[2])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 0))
 		{
-			Messaging.error(sender, "Invalid arguments: /sr");
+			Messaging.error(sender, Constants.errorMessages[7]);
 			return true;
 		}
 

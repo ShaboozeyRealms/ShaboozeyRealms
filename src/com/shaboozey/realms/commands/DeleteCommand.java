@@ -14,27 +14,27 @@ public class DeleteCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 
-		if(!(sender.hasPermission("srealms.delete")))
+		if(!(sender.hasPermission(Constants.permissions[1])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, "Invalid arguments: /srdelete <worldname>");
+			Messaging.error(sender, Constants.errorMessages[4]);
 			return true;
 		}
 		
 		if(!(Util.mapExists(args[0])))
 		{
-			Messaging.error(sender, "Cannot delete this world as it doesn't exist");
+			Messaging.error(sender, Constants.errorMessages[5]);
 			return true;
 		}
 		
 		if(Util.isDefaultMap(args[0]))
 		{
-			Messaging.error(sender, "Cannot delete this world as it the default world!");
+			Messaging.error(sender, Constants.errorMessages[6]);
 			return true;
 		}
 		

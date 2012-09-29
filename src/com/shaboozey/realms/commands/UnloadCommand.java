@@ -17,39 +17,39 @@ public class UnloadCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 		
-		if(!(sender.hasPermission("srealms.unload")))
+		if(!(sender.hasPermission(Constants.permissions[12])))
 		{
-			Messaging.error(sender, "Insufficent permissions!");
+			Messaging.error(sender, Constants.errorMessages[0]);
 			return true;
 		}
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, "Invalid arguments: /srunload <worldname>");
+			Messaging.error(sender, Constants.errorMessages[27]);
 			return true;
 		}
 		
 		if(!(Util.mapExists(args[0])))
 		{
-			Messaging.error(sender, "Cannot unload this world as it doesn't exist");
+			Messaging.error(sender, Constants.errorMessages[28]);
 			return true;
 		}
 
 		if(!(RealmFileManager.hasConfig(args[0])))
 		{
-			Messaging.error(sender, "No config exists for this world... try /srcreate <name> <environment>");
+			Messaging.error(sender, Constants.errorMessages[17]);
 			return true;
 		}
 		
 		if(!(RealmManager.isLoaded(args[0])))
 		{
-			Messaging.error(sender, "Cannot unload this world as it is already unloaded!");
+			Messaging.error(sender, Constants.errorMessages[29]);
 			return true;
 		}
 		
 		if(Util.isDefaultMap(args[0]))
 		{
-			Messaging.error(sender, "Cannot unload this world as it the default world!");
+			Messaging.error(sender, Constants.errorMessages[30]);
 			return true;
 		}
 		
