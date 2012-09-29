@@ -1,7 +1,9 @@
 package com.shaboozey.realms.manager;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
@@ -16,6 +18,7 @@ import com.shaboozey.realms.util.Util;
 public class RealmManager {
 
 	private static HashMap<String, LoadState> realms = new HashMap<String, LoadState>();
+	public static List<String> unloadQueue = new ArrayList<String>();
 	
 	public static void loadRealm(Realm realm, CommandSender sender) {
 		
@@ -36,6 +39,8 @@ public class RealmManager {
 	}
 	
 	public static void unloadRealm(Realm realm, CommandSender sender) {
+
+		unloadQueue.add(realm.getName());
 		
 		if(!RealmFileManager.hasConfig(realm.getName()))
 		{
@@ -48,6 +53,7 @@ public class RealmManager {
 			World w = ShaboozeyRealms.getPlugin().getServer().getWorld(realm.getName());
 			Util.movePlayersToSpawn(w);
 			Util.unloadChunks(w);
+			
 			success = ShaboozeyRealms.getPlugin().getServer().unloadWorld(realm.getName(), true);
 		}
 		
@@ -62,6 +68,8 @@ public class RealmManager {
 		{
 			Messaging.error(sender, String.format("Could not unload world '%s'... are players still in the world?", realm.getName()));
 		}
+		
+		unloadQueue.remove(realm.getName());
 		
 	}
 
@@ -94,6 +102,8 @@ public class RealmManager {
 	}
 	
 	public static void deleteRealm(Realm realm, CommandSender sender) {
+
+		unloadQueue.add(realm.getName());
 		
 		if(RealmFileManager.hasConfig(realm.getName()))
 		{
@@ -118,6 +128,8 @@ public class RealmManager {
 		{
 			Messaging.message(sender, String.format("World '%s' could not be deleted... are players still in the world?", realm.getName()));
 		}
+		
+		unloadQueue.remove(realm.getName());
 
 	}
 	

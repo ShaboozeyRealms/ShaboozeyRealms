@@ -40,3 +40,6 @@ commands:
     srmobs:
         description: Sets whether a mob can spawn or not
         usage: /srmobs <world> <mob> <value>
+    srwho:
+        description: Provides the world of a player
+        usage: /srwho <player>

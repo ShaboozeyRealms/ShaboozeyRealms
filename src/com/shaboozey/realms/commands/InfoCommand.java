@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.shaboozey.realms.Realm;
+import com.shaboozey.realms.ShaboozeyRealms;
 import com.shaboozey.realms.manager.RealmFileManager;
 import com.shaboozey.realms.util.Messaging;
 
@@ -35,6 +36,8 @@ public class InfoCommand implements CommandExecutor {
 		
 		Messaging.message(sender, "Name: " + realm.getName());
 		Messaging.message(sender, "Environment: " + realm.getEnvironment());
+		Messaging.message(sender, "Players: " + ShaboozeyRealms.getPlugin().getServer().getWorld(args[0]).getPlayers().size() 
+				+ "/" + ShaboozeyRealms.getPlugin().getServer().getMaxPlayers());
 		
 		return true;
 		

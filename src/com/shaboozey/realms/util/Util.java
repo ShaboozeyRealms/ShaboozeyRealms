@@ -133,6 +133,8 @@ public class Util {
 					dw.getSpawnLocation().getX(), 
 					dw.getSpawnLocation().getY(), 
 					dw.getSpawnLocation().getZ()));
+			
+			Messaging.message(p, "The world you were in has been unloaded/deleted and as such you have been teleported to spawn");
 		}
 	}
 	

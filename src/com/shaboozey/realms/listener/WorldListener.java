@@ -42,7 +42,7 @@ public class WorldListener implements Listener {
 	{
 		World w = e.getFrom();
 		
-		if(Util.isDefaultMap(w.getName()))
+		if(Util.isDefaultMap(w.getName()) || RealmManager.unloadQueue.contains(w.getName()))
 			return;
 		
 		if(w.getPlayers().size() == 0)

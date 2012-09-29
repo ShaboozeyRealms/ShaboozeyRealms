@@ -16,6 +16,7 @@ import com.shaboozey.realms.commands.UnloadCommand;
 import com.shaboozey.realms.commands.DeleteCommand;
 import com.shaboozey.realms.commands.ListCommand;
 import com.shaboozey.realms.commands.ShartCommand;
+import com.shaboozey.realms.commands.WhoCommand;
 import com.shaboozey.realms.listener.WorldListener;
 import com.shaboozey.realms.manager.RealmFileManager;
 import com.shaboozey.realms.manager.RealmManager;
@@ -72,6 +73,7 @@ public class ShaboozeyRealms extends JavaPlugin {
 		this.getCommand("shart").setExecutor(new ShartCommand());
 		this.getCommand("srinfo").setExecutor(new InfoCommand());
 		this.getCommand("srmobs").setExecutor(new MobsCommand());
+		this.getCommand("srwho").setExecutor(new WhoCommand());
 	}
 
 	public static ShaboozeyRealms getPlugin() {
