@@ -52,6 +52,9 @@ public class LoadCommand implements CommandExecutor {
 			return true;
 		}
 		
+		
+		Messaging.message(sender, "Loading world...");
+		
 		Realm realm = RealmFileManager.getRealmConfig(args[0]);
 		RealmManager.loadRealm(realm, sender);
 		return true;

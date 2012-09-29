@@ -54,6 +54,9 @@ public class UnloadCommand implements CommandExecutor {
 			return true;
 		}
 		
+		
+		Messaging.message(sender, "Unloading world...");
+		
 		World w = ShaboozeyRealms.getPlugin().getServer().getWorld(args[0]);
 		RealmManager.unloadRealm(new Realm(w.getName(), w.getEnvironment()),
 				sender);

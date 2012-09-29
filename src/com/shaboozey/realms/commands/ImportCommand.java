@@ -40,6 +40,9 @@ public class ImportCommand implements CommandExecutor {
 		}
 		
 		
+		
+		Messaging.message(sender, "Importing world...");
+		
 		RealmManager.importRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;
 	}
