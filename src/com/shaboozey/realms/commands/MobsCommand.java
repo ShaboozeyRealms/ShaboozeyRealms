@@ -43,7 +43,7 @@ public class MobsCommand implements CommandExecutor {
 		Util.removeEntities(ShaboozeyRealms.getPlugin().getServer().getWorld(args[0]));
 		
 		Messaging.message(sender, String.format("%s have been %s on world '%s'", getMobName(args[1]), getAllowed(args[2]), args[0]));
-		
+		Messaging.log(String.format("Mob command on world '%s' on mob type '%s' run by '%s'", args[0], getMobName(args[1]), sender.getName()));
 		return true;
 		
 	}

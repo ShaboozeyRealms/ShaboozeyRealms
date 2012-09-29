@@ -60,6 +60,9 @@ public class UnloadCommand implements CommandExecutor {
 		World w = ShaboozeyRealms.getPlugin().getServer().getWorld(args[0]);
 		RealmManager.unloadRealm(new Realm(w.getName(), w.getEnvironment()),
 				sender);
+		
+		Messaging.log(String.format("Unload command on world '%s' run by '%s'", args[0], sender.getName()));
+		
 		return true;
 	}
 }

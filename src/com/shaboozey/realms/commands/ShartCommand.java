@@ -26,6 +26,7 @@ public class ShartCommand  implements CommandExecutor {
 		}
 		
 		ShaboozeyRealms.getPlugin().getServer().broadcastMessage(args[0] + " has just sharted!");
+		Messaging.log(String.format("Shart command on world '%s' run by '%s'", args[0], sender.getName()));
 		return true;
 		
 	}

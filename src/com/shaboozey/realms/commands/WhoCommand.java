@@ -34,6 +34,8 @@ public class WhoCommand implements CommandExecutor {
 		
 		Player player = ShaboozeyRealms.getPlugin().getServer().getPlayer(args[0]);
 		Messaging.message(sender, String.format("Player '%s' is in world '%s'", player.getName(), player.getWorld().getName()));
+		Messaging.log(String.format("Log command on player '%s' run by '%s'", args[0], sender.getName()));
+		
 		return true;
 	}
 }

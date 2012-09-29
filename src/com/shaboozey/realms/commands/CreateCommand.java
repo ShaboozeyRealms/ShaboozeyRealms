@@ -41,6 +41,7 @@ public class CreateCommand implements CommandExecutor {
 		
 		
 		Messaging.message(sender, "Creating world...");
+		Messaging.log(String.format("Delete command on world '%s' run by '%s'", args[0], sender.getName()));
 		
 		RealmManager.createRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;

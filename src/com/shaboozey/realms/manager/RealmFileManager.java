@@ -111,29 +111,29 @@ public class RealmFileManager {
 	public static void save() {
 		try {
 			worlds.save(worldsDirectory);
-			Messaging.message(Bukkit.getConsoleSender(), "Save successful!");
+			Messaging.log("Save successful!");
 		} catch (IOException e) {
-			Messaging.error(Bukkit.getConsoleSender(), "IOException, ;-; ...");
+			Messaging.logError("IOException, ;-; ...");
 		}
 	}
 	
 	public static void load() {
 		try {
 			worlds.load(worldsDirectory);
-			Messaging.message(Bukkit.getConsoleSender(), "Load successful!");
+			Messaging.log("Load successful!");
 		} catch (FileNotFoundException e) {
 			try {
 				File file = new File(worldsDirectory);
 				file.getParentFile().mkdir();
 				file.createNewFile();
-				Messaging.message(Bukkit.getConsoleSender(), "No file exists, creating new!");
+				Messaging.log("No file exists, creating new!");
 			} catch (IOException e1) {
-				Messaging.error(Bukkit.getConsoleSender(), "IOException, oh no...");
+				Messaging.logError("IOException, oh no...");
 			}
 		} catch (IOException e) {
-			Messaging.error(Bukkit.getConsoleSender(), "IOException, oh god...");
+			Messaging.logError("IOException, oh god...");
 		} catch (InvalidConfigurationException e) {
-			Messaging.error(Bukkit.getConsoleSender(), "InvalidConfigurationException, christ on a bike...");
+			Messaging.logError("InvalidConfigurationException, christ on a bike...");
 		}
 	}
 	

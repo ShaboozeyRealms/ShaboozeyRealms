@@ -1,12 +1,8 @@
 package com.shaboozey.realms.util;
 
-import java.util.logging.Level;
-
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
-import com.shaboozey.realms.ShaboozeyRealms;
 
 public class Messaging {
 
@@ -14,20 +10,21 @@ public class Messaging {
 
 	public static void message(CommandSender sender, String message)
 	{
-		if(sender instanceof Player)
-		{
-			sender.sendMessage(prefix + ChatColor.WHITE + message);
-		}
-		ShaboozeyRealms.getPlugin().getLogger().log(Level.INFO, message + " by " + sender.getName());
-		
+		sender.sendMessage(prefix + ChatColor.WHITE + message);
 	}
 	
 	public static void error(CommandSender sender, String message)
 	{
-		if(sender instanceof Player)
-		{
-			sender.sendMessage(prefix + ChatColor.RED + "Error! " + message);
-		}
-		ShaboozeyRealms.getPlugin().getLogger().log(Level.INFO, message + " by " + sender.getName());
+		sender.sendMessage(prefix + ChatColor.RED + "Error! " + message);
+	}
+	
+	public static void log(String message)
+	{
+		Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.YELLOW + "[LOG] " + ChatColor.WHITE + message);
+	}
+	
+	public static void logError(String message)
+	{
+		Bukkit.getConsoleSender().sendMessage(prefix + ChatColor.YELLOW + "[LOG] " + ChatColor.RED + message);
 	}
 }

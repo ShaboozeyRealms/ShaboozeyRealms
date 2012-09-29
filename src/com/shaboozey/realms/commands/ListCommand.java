@@ -40,6 +40,9 @@ public class ListCommand implements CommandExecutor {
 					+ " - " + realm.getValue().toString());
 		}
 		while(realms.hasNext());
+		
+		Messaging.log(String.format("List command run by '%s'", sender.getName()));
+		
 		return true;
 	}
 }

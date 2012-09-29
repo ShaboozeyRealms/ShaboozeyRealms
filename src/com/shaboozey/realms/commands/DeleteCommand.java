@@ -41,6 +41,7 @@ public class DeleteCommand implements CommandExecutor {
 		
 		
 		Messaging.message(sender, "Deleting world...");
+		Messaging.log(String.format("Delete command on world '%s' run by '%s'", args[0], sender.getName()));
 		
 		RealmManager.deleteRealm(new Realm(args[0], null), sender);
 		return true;

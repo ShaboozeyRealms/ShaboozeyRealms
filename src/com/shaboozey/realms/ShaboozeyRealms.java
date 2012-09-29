@@ -36,7 +36,7 @@ public class ShaboozeyRealms extends JavaPlugin {
 		
 		this.getServer().getPluginManager().registerEvents(new WorldListener(), this);
 		
-		Messaging.message(Bukkit.getConsoleSender(), "Loading worlds.yml...");
+		Messaging.log("Loading worlds.yml...");
 		RealmFileManager.load();
 		
 		if(!(RealmFileManager.hasConfig(defaultWorld)))
@@ -55,7 +55,7 @@ public class ShaboozeyRealms extends JavaPlugin {
 	@Override
 	public void onDisable() {
 
-		Messaging.message(Bukkit.getConsoleSender(), "Saving worlds.yml...");
+		Messaging.log("Saving worlds.yml...");
 		RealmFileManager.save();
 	}
 	

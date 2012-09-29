@@ -42,6 +42,7 @@ public class ImportCommand implements CommandExecutor {
 		
 		
 		Messaging.message(sender, "Importing world...");
+		Messaging.log(String.format("Import command on world '%s' run by '%s'", args[0], sender.getName()));
 		
 		RealmManager.importRealm(new Realm(args[0], Util.getEnvironment(args[1])), sender);
 		return true;

@@ -30,6 +30,7 @@ public class HelpCommand  implements CommandExecutor {
 			Messaging.message(sender, "Usage: " + Constants.descriptions[i]);
 		}
 		
+		Messaging.log(String.format("Help command run by '%s'", sender.getName()));
 		return true;
 		
 	}

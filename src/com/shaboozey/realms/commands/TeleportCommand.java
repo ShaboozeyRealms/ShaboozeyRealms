@@ -61,6 +61,8 @@ public class TeleportCommand implements CommandExecutor {
 			Messaging.message(p, String.format("You were teleported to world '%s' by '%s'", args[0], sender.getName()));
 			Messaging.message(sender, String.format("You have teleported '%s' to world '%s'", p.getName(), args[0]));
 			
+			Messaging.log(String.format("Teleport command on player '%s' to world '%s' run by '%s'", args[1], args[0], sender.getName()));
+			
 		}
 		else {
 
@@ -97,6 +99,8 @@ public class TeleportCommand implements CommandExecutor {
 							w.getSpawnLocation().getZ()));
 			
 			Messaging.message(p, String.format("You have teleported to world '%s'", args[0]));
+			
+			Messaging.log(String.format("Teleport command on player '%s' to world '%s' run by '%s'", sender.getName(), args[0], sender.getName()));
 		}
 		
 		return true;

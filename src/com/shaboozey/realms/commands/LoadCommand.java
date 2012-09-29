@@ -54,6 +54,7 @@ public class LoadCommand implements CommandExecutor {
 		
 		
 		Messaging.message(sender, "Loading world...");
+		Messaging.log(String.format("Load command on world '%s' run by '%s'", args[0], sender.getName()));
 		
 		Realm realm = RealmFileManager.getRealmConfig(args[0]);
 		RealmManager.loadRealm(realm, sender);

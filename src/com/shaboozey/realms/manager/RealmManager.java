@@ -137,14 +137,14 @@ public class RealmManager {
 	{
 		realms.put(realm.getName(), LoadState.DEFAULT);
 		RealmFileManager.createWorldConfig(realm);
-		Messaging.message(sender, String.format("Default world '%s' registered successfully.", realm.getName()));
+		Messaging.log(String.format("Default world '%s' registered successfully.", realm.getName()));
 	}
 	
 	public static void registerUnloadedWorld(Realm realm, CommandSender sender)
 	{
 		realms.remove(realm.getName());
 		realms.put(realm.getName(), LoadState.UNLOADED);
-		Messaging.message(sender, String.format("Unloaded world '%s' registered successfully.", realm.getName()));
+		Messaging.log(String.format("Unloaded world '%s' registered successfully.", realm.getName()));
 		
 	}
 	
