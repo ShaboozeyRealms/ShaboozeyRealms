@@ -33,7 +33,7 @@ public class Constants {
 			"Sets the world spawn",
 			"Lists all the worlds",
 			"Provides info about the world",
-			"Shows worldname of <player>"
+			"Shows world name of a player"
 	};
 	
 	public final static String[] errorMessages =
