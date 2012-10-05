@@ -26,31 +26,31 @@ public class UnloadCommand implements CommandExecutor {
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, Constants.errorMessages[27]);
+			Messaging.error(sender, Constants.errorMessages[26]);
 			return true;
 		}
 		
 		if(!(Util.mapExists(args[0])))
 		{
-			Messaging.error(sender, Constants.errorMessages[28]);
+			Messaging.error(sender, Constants.errorMessages[27]);
 			return true;
 		}
 
 		if(!(RealmFileManager.hasConfig(args[0])))
 		{
-			Messaging.error(sender, Constants.errorMessages[17]);
+			Messaging.error(sender, Constants.errorMessages[16]);
 			return true;
 		}
 		
 		if(!(RealmManager.isLoaded(args[0])))
 		{
-			Messaging.error(sender, Constants.errorMessages[29]);
+			Messaging.error(sender, Constants.errorMessages[28]);
 			return true;
 		}
 		
 		if(Util.isDefaultMap(args[0]))
 		{
-			Messaging.error(sender, Constants.errorMessages[30]);
+			Messaging.error(sender, Constants.errorMessages[29]);
 			return true;
 		}
 		

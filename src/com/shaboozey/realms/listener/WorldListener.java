@@ -1,7 +1,5 @@
 package com.shaboozey.realms.listener;
 
-import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.entity.Blaze;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Cow;
@@ -26,32 +24,13 @@ import org.bukkit.entity.Wolf;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-import com.shaboozey.realms.Realm;
 import com.shaboozey.realms.manager.RealmFileManager;
-import com.shaboozey.realms.manager.RealmManager;
 import com.shaboozey.realms.util.Util;
 
 public class WorldListener implements Listener {
-
-	@EventHandler
-	public void onWorldChange(PlayerChangedWorldEvent e)
-	{
-		World w = e.getFrom();
-		
-		if(Util.isDefaultMap(w.getName()) || RealmManager.unloadQueue.contains(w.getName()))
-			return;
-		
-		if(w.getPlayers().size() == 0)
-		{
-			RealmManager.unloadRealm(
-					new Realm(w.getName(), w.getEnvironment()),
-					Bukkit.getConsoleSender());
-		}
-	}
 
 	@EventHandler
 	public void onWorldLoad(WorldLoadEvent e)

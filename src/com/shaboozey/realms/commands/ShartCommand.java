@@ -21,7 +21,7 @@ public class ShartCommand  implements CommandExecutor {
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, Constants.errorMessages[24]);
+			Messaging.error(sender, Constants.errorMessages[23]);
 			return true;
 		}
 		

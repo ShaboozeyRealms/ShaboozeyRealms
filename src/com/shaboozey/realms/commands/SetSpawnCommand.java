@@ -22,13 +22,13 @@ public class SetSpawnCommand  implements CommandExecutor {
 		
 		if(!(sender instanceof Player))
 		{
-			Messaging.error(sender, Constants.errorMessages[22]);
+			Messaging.error(sender, Constants.errorMessages[21]);
 			return true;
 		}
 		
 		if(!(args.length == 0))
 		{
-			Messaging.error(sender, Constants.errorMessages[23]);
+			Messaging.error(sender, Constants.errorMessages[22]);
 			return true;
 		}
 		

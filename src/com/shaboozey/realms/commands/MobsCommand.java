@@ -29,13 +29,13 @@ public class MobsCommand implements CommandExecutor {
 		
 		if(!RealmFileManager.hasConfig(args[0]))
 		{
-			Messaging.error(sender, Constants.errorMessages[20]);
+			Messaging.error(sender, Constants.errorMessages[16]);
 			return true;
 		}
 		
 		if(!isValidMob(args[1]))
 		{
-			Messaging.error(sender, Constants.errorMessages[21]);
+			Messaging.error(sender, Constants.errorMessages[20]);
 			return true;
 		}
 		

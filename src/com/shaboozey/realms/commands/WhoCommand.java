@@ -22,7 +22,7 @@ public class WhoCommand implements CommandExecutor {
 		
 		if(!(args.length == 1))
 		{
-			Messaging.error(sender, Constants.errorMessages[31]);
+			Messaging.error(sender, Constants.errorMessages[30]);
 			return true;
 		}
 		

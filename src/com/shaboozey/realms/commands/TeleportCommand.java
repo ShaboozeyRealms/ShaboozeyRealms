@@ -21,7 +21,7 @@ public class TeleportCommand implements CommandExecutor {
 		
 		if(args.length > 2 || args.length < 1)
 		{
-			Messaging.error(sender, Constants.errorMessages[25]);
+			Messaging.error(sender, Constants.errorMessages[24]);
 			return true;
 		}
 		
@@ -74,7 +74,7 @@ public class TeleportCommand implements CommandExecutor {
 			
 			if(!(sender instanceof Player))
 			{
-				Messaging.error(sender, Constants.errorMessages[26]);
+				Messaging.error(sender, Constants.errorMessages[25]);
 				return true;
 			}
 			
